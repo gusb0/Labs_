@@ -1,0 +1,37 @@
+#include <iostream>
+
+int main() {
+    // 1. Опис змінних символьного типу
+    char symbol1 = '>';
+    char symbol2 = '7';
+    char symbol3 = 'R';
+
+    // 2. Опис констант символьного типу
+    const char constSymbol1 = 0x1a;  // Код символу 0x1a
+    const char constSymbol2 = 0x32;  // Код символу 0x32
+    const char constSymbol3 = 0x63;  // Код символу 0x63
+
+    // 3. Ініціювання об'єктів при опису
+    char initSymbol1 = 'A';
+    char initSymbol2 = 'B';
+    char initSymbol3 = 'C';
+
+    // 4. Ініціювання об'єктів оператором привласнення
+    initSymbol1 = symbol1;  // Привласнення '>'
+    initSymbol2 = symbol2;  // Привласнення '7'
+    initSymbol3 = symbol3;  // Привласнення 'R'
+
+    // Виведення значень змінних
+    std::cout << "Значення змінних після привласнення:\n";
+    std::cout << "initSymbol1: " << initSymbol1 << std::endl;
+    std::cout << "initSymbol2: " << initSymbol2 << std::endl;
+    std::cout << "initSymbol3: " << initSymbol3 << std::endl;
+
+    // Виведення констант у вигляді символів
+    std::cout << "Константи у вигляді символів:\n";
+    std::cout << "constSymbol1: " << constSymbol1 << std::endl;
+    std::cout << "constSymbol2: " << constSymbol2 << std::endl;
+    std::cout << "constSymbol3: " << constSymbol3 << std::endl;
+
+    return 0;
+}
