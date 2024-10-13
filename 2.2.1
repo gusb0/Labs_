@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+// Перелічувальний тип для імен студентів
+enum Names {
+    Ivan, // 0
+    Petro, // 1
+    Oksana, // 2
+    Natalia, // 3
+    Andriy, // 4
+    Maria, // 5
+    Oleksii // 6
+};
+
+// Пойменований тип для студентів
+struct Student {
+    Names name;      // Ім'я студента (перелічувальний тип)
+    int course;      // Курс (ціле значення)
+    bool hasScholarship; // Стипендія (логічне значення)
+};
+
+// Функція для перетворення імені на рядок для зручного виводу
+string getNameString(Names name) {
+    switch (name) {
+        case Ivan: return "Ivan";
+        case Petro: return "Petro";
+        case Oksana: return "Oksana";
+        case Natalia: return "Natalia";
+        case Andriy: return "Andriy";
+        case Maria: return "Maria";
+        case Oleksii: return "Oleksii";
+        default: return "Unknown";
+    }
+}
+
+int main() {
+    // Ініціалізація масиву студентів (7 елементів)
+    Student students[7] = {
+        { Ivan, 1, false },
+        { Petro, 3, true },
+        { Oksana, 3, false },
+        { Natalia, 2, true },
+        { Andriy, 1, false },
+        { Maria, 3, true },
+        { Oleksii, 2, false }
+    };
+
+    int springBirthdays = 0;   // Кількість студентів, народжених навесні
+    int springMonths[3] = {3, 4, 5}; // Місяці весни (березень, квітень, травень)
+    
+    int thirdCourseWithScholarship = 0; // Кількість студентів 3-го курсу, які отримують стипендію
+    int thirdCourseTotal = 0;   // Загальна кількість студентів 3-го курсу
+
+    // Проходимо по всіх студентах
+    for (int i = 0; i < 7; i++) {
+        // Перевірка на 3-й курс
+        if (students[i].course == 3) {
+            thirdCourseTotal++;
+            if (students[i].hasScholarship) {
+                thirdCourseWithScholarship++;
+            }
+        }
+    }
+
+    // Обчислення процента студентів 3-го курсу, які отримують стипендію
+    double scholarshipPercentage = (thirdCourseTotal > 0) ? (double)thirdCourseWithScholarship / thirdCourseTotal * 100 : 0;
+
+    // Виведення результатів
+    cout << "Список студентів:\n";
+    for (int i = 0; i < 7; i++) {
+        cout << "Ім'я: " << getNameString(students[i].name)
+             << ", Курс: " << students[i].course
+             << ", Стипендія: " << (students[i].hasScholarship ? "Так" : "Ні") << endl;
+    }
+
+    cout << "\nПроцент студентів 3-го курсу, які отримують стипендію: " << scholarshipPercentage << "%\n";
+
+    return 0;
+}
