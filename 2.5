@@ -1,0 +1,71 @@
+// main.cpp - основний файл
+
+#include "list.h"  // Включення заголовного файлу
+
+using namespace std;
+
+// Підпрограма 1: Формування 1-го списку (включення в кінець)
+void formFirstList(Node*& head, int count) {
+    Node* tail = nullptr;  // Вказівник на останній елемент списку
+
+    for (int i = 0; i < count; ++i) {
+        float value;
+        cout << "Введіть значення елементу " << i + 1 << ": ";
+        cin >> value;
+
+        Node* newNode = new Node{ value, nullptr };  // Створення нового вузла
+
+        if (head == nullptr) {
+            head = newNode;  // Якщо список порожній, новий вузол стає головою
+            tail = head;
+        } else {
+            tail->next = newNode;  // Додаємо новий вузол в кінець
+            tail = newNode;
+        }
+    }
+}
+
+// Підпрограма 2: Формування 2-го списку (від’ємні значення, включення до початку)
+void formSecondList(Node* firstList, Node*& secondList) {
+    Node* current = firstList;
+
+    while (current != nullptr) {
+        if (isNegative(current->data)) {  // Перевірка на від’ємність
+            Node* newNode = new Node{ current->data, secondList };  // Включення до початку списку
+            secondList = newNode;
+        }
+        current = current->next;
+    }
+}
+
+// Функція для виведення списку
+void printList(Node* head) {
+    Node* current = head;
+    while (current != nullptr) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* firstList = nullptr;   // Початково список порожній
+    Node* secondList = nullptr;  // Другий список також порожній
+
+    // Формуємо перший список (з 9 елементів згідно з варіантом)
+    cout << "Формуємо перший список:" << endl;
+    formFirstList(firstList, 9);
+
+    // Формуємо другий список (з від’ємних елементів першого)
+    formSecondList(firstList, secondList);
+
+    // Виводимо перший список
+    cout << "Перший список: ";
+    printList(firstList);
+
+    // Виводимо другий список
+    cout << "Другий список (від’ємні значення): ";
+    printList(secondList);
+
+    return 0;
+}
