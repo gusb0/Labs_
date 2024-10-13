@@ -1,0 +1,89 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Структура для елементу односпрямованого списку
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Опис типу списку
+struct List {
+    Node* head = nullptr;
+};
+
+// Функція для додавання елементів у список
+void addElement(List &list, int data) {
+    Node* newNode = new Node();
+    newNode->data = data;
+    newNode->next = nullptr;
+
+    if (list.head == nullptr) {
+        list.head = newNode;
+    } else {
+        Node* temp = list.head;
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+}
+
+// Функція для ініціювання списку
+void initializeList(List &list, int arr[], int N) {
+    for (int i = 0; i < N; i++) {
+        addElement(list, arr[i]);
+    }
+}
+
+// Функція для видалення елементів зі списку
+void deleteElements(List &list, int M) {
+    for (int i = 0; i < M; i++) {
+        if (list.head == nullptr) {
+            cout << "Список порожній, неможливо видалити елементи!" << endl;
+            return;
+        }
+
+        Node* temp = list.head;
+        list.head = list.head->next;
+        delete temp;
+    }
+}
+
+// Функція для друку списку
+void printList(List &list) {
+    Node* temp = list.head;
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    // Опис змінної індексованого типу з 10 елементів
+    int indexArray[10] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
+
+    // Опис змінної типу List (односпрямований список)
+    List myList;
+
+    // Ініціюємо список N елементами
+    int N = 5; // кількість елементів для додавання
+    initializeList(myList, indexArray, N);
+
+    // Виводимо список після ініціалізації
+    cout << "Список після ініціалізації: ";
+    printList(myList);
+
+    // Видаляємо M елементів
+    int M = 3; // кількість елементів для видалення
+    deleteElements(myList, M);
+
+    // Виводимо список після видалення
+    cout << "Список після видалення " << M << " елементів: ";
+    printList(myList);
+
+    return 0;
+}
