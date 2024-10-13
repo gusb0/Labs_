@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Підпрограма для обчислення значення функції за варіантом 10
+double calculateFunction(double x) {
+    if (x > 3) {
+        double sum = 0;
+        for (int i = 3; i <= 7; ++i) {
+            sum += (2 * i) / x;
+        }
+        return (x * x / 7.0) + sum;
+    } else {
+        return (5 + x) / (5 * x + 8);
+    }
+}
+
+int main() {
+    double x_start = 0.0;  // Початок діапазону
+    double x_end = 1.7;    // Кінець діапазону
+    double h = 0.2;        // Крок
+
+    // Виведемо заголовок для таблиці
+    cout << " x\t  y" << endl;
+    cout << "--------------" << endl;
+
+    // Табулювання функції
+    for (double x = x_start; x <= x_end; x += h) {
+        double y = calculateFunction(x);  // Викликаємо підпрограму для обчислення y
+        cout << x << "\t" << y << endl;   // Виводимо значення x та відповідне y
+    }
+
+    return 0;
+}
