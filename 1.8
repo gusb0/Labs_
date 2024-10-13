@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x;
+
+    // Оператор вибору if-else
+    cout << "Введіть число: ";
+    cin >> x;
+
+    if (x > 0) {
+        cout << "Число більше 0" << endl;
+    } else if (x < 0) {
+        cout << "Число менше 0" << endl;
+    } else {
+        cout << "Число дорівнює 0" << endl;
+    }
+
+    // Оператор вибору switch
+    int day;
+    cout << "Введіть номер дня тижня (1-7): ";
+    cin >> day;
+
+    switch(day) {
+        case 1:
+            cout << "Понеділок" << endl;
+            break;
+        case 2:
+            cout << "Вівторок" << endl;
+            break;
+        case 3:
+            cout << "Середа" << endl;
+            break;
+        case 4:
+            cout << "Четвер" << endl;
+            break;
+        case 5:
+            cout << "П'ятниця" << endl;
+            break;
+        case 6:
+            cout << "Субота" << endl;
+            break;
+        case 7:
+            cout << "Неділя" << endl;
+            break;
+        default:
+            cout << "Невірне значення" << endl;
+    }
+
+    // Оператор циклу for
+    cout << "Числа від 1 до 5: ";
+    for (int i = 1; i <= 5; i++) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
