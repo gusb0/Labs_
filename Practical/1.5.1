@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int findFirstOccurrence(int A[], int n, int P) {
+    for (int i = 0; i < n; ++i) {
+        if (A[i] == P) {
+            return i;  // Повертаємо індекс першого входження
+        }
+    }
+    return -1;  // Якщо P не знайдено
+}
+
+int main() {
+    int n, P;
+    cout << "Введіть кількість елементів: ";
+    cin >> n;
+    int A[n];
+
+    cout << "Введіть елементи масиву: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> A[i];
+    }
+
+    cout << "Введіть значення P для пошуку: ";
+    cin >> P;
+
+    int index = findFirstOccurrence(A, n, P);
+
+    if (index != -1) {
+        cout << "Індекс першого входження P: " << index << endl;
+    } else {
+        cout << "Значення P не знайдено" << endl;
+    }
+
+    return 0;
+}
